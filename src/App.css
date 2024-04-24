@@ -1,0 +1,29 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2{
+    margin: 0;
+    color: rgb(252, 236, 8);
+}
+ul{
+    margin: 0;
+}
+ul li{
+    list-style: none;
+    width: 0;
+}
+.letras {
+    display: flex;
+    justify-content: space-around;
+    font-size: 4rem;
+    text-align: center;
+}
+
+
+.letras .letras_b .letras_b_num {
+    font-size: 2rem;
+}
+
