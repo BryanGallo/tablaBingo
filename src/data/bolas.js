@@ -1,60 +1,129 @@
 const bolasLetras = [
     {
-        id: "1",
         numero: 1,
         letra: "B",
     },
     {
-        id: "2",
         numero: 2,
         letra: "B",
     },
     {
-        id: "3",
         numero: 3,
         letra: "B",
     },
     {
-        id: "4",
         numero: 4,
+        letra: "B",
+    },
+    {
+        numero: 5,
+        letra: "B",
+    },
+    {
+        numero: 6,
+        letra: "B",
+    },
+    {
+        numero: 7,
+        letra: "B",
+    },
+    {
+        numero: 8,
         letra: "B",
     },
     
     {
-        id: "11",
+        numero: 9,
+        letra: "B",
+    },
+    {
+        numero: 10,
+        letra: "B",
+    },
+    {
         numero: 11,
         letra: "B",
     },
     {
-        id: "12",
         numero: 12,
         letra: "B",
     },
     {
-        id: "13",
         numero: 13,
         letra: "B",
     },
     {
-        id: "14",
         numero: 14,
         letra: "B",
     },
     {
-        id: "15",
         numero: 15,
         letra: "B",
     },
     {
-        id: "16",
         numero: 16,
         letra: "I",
     },
     {
-        id: "17",
         numero: 17,
         letra: "I",
     },
+    {
+        numero: 18,
+        letra: "I",
+    },
+    {
+        numero: 30,
+        letra: "I",
+    },
+    {
+        numero: 31,
+        letra: "N",
+    },
+    {
+        numero: 32,
+        letra: "N",
+    },
+    {
+        numero: 33,
+        letra: "N",
+    },
+    {
+        numero: 45,
+        letra: "N",
+    },
+    {
+        numero: 46,
+        letra: "G",
+    },
+    {
+        numero: 47,
+        letra: "G",
+    },
+    {
+        numero: 48,
+        letra: "G",
+    },
+    {
+        numero: 60,
+        letra: "G",
+    },
+    {
+        numero: 61,
+        letra: "O",
+    },
+    {
+        numero: 62,
+        letra: "O",
+    },
+    {
+        numero: 63,
+        letra: "O",
+    },
+    {
+        numero: 75,
+        letra: "O",
+    }
 ];
 
 export default bolasLetras;

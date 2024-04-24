@@ -4,14 +4,14 @@
     text-align: center;
 }
 
-h2{
+h2 {
     margin: 0;
     color: rgb(252, 236, 8);
 }
-ul{
+ul {
     margin: 0;
 }
-li{
+li {
     list-style: none;
 }
 .letras {
@@ -21,13 +21,42 @@ li{
     text-align: center;
 }
 
-
-.letras .letras_b .letras_b_num {
-    font-size: 2rem;
+.letras .letras_b {
+    width: 20%;
+}
+.letras .letras_b .letras_b_num li {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .letras .letras_b .letras_b_num label:nth-child(2) {
-    border-radius: 51%;
-    padding: 0.5rem;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.1rem;
+
+}
+
+#rosa{
+    background-color: rgb(233, 66, 255);
+}
+#rojo{
+    background-color: red;
+}
+#amarillo{
+    background-color: yellow;
+}
+#azul{
+    background-color: blue;
+}
+#verde{
+    background-color: green;
 }
 

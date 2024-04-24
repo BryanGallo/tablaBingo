@@ -16,12 +16,28 @@ function App() {
 
     const agregarBola = (condition) => {
         console.log(condition);
+        alert(`LA BOLA ES : ${condition.numero}-${condition.letra}`)
         if (condition.letra === "B") {
             setBolasB([...bolasB, condition]);
+            return true;
         }
         if (condition.letra === "I") {
             setBolasI([...bolasI, condition]);
+            return true;
         }
+        if (condition.letra === "N") {
+            setBolasN([...bolasN, condition]);
+            return true;
+        }
+        if (condition.letra === "G") {
+            setBolasG([...bolasG, condition]);
+            return true;
+        }
+        if (condition.letra === "O") {
+            setBolasO([...bolasO, condition]);
+            return true;
+        }
+        return false;
     };
 
     const generar = () => {
@@ -29,21 +45,23 @@ function App() {
             alert("No hay mas bolas");
             return;
         }
+
         console.log(bolas.length);
-        let numeroRamdom = Math.floor(Math.random() * 70) + 1;
-        let condition = bolas.find((bola) => bola.numero === numeroRamdom);
+        // Seleccionar un índice aleatorio dentro del rango de bolas
+        const index = Math.floor(Math.random() * bolas.length);
+        console.log(index);
+        // Seleccionar la bola en ese índice
+        const condition = bolas[index];
         console.log(condition);
-        if (!condition) {
-            generar();
-            return
-        }
-        let nuevoArreglo = bolas.filter(
-            (bola) => bola.numero !== condition.numero
-        );
+        // Eliminar la bola del arreglo original
+        const nuevoArreglo = bolas.filter((bola, i) => i !== index);
         console.log(nuevoArreglo);
+
+        // Actualizar el estado con el nuevo arreglo de bolas
         setBolas(nuevoArreglo);
 
-        let agrego = agregarBola(condition);
+        // Agregar la bola a su respectiva categoría
+        agregarBola(condition);
     };
 
     let maxsB = [];
@@ -54,6 +72,18 @@ function App() {
     for (let index = 16; index < 31; index++) {
         maxsI = [...maxsI, index];
     }
+    let maxsN = [];
+    for (let index = 31; index < 46; index++) {
+        maxsN = [...maxsN, index];
+    }
+    let maxsG = [];
+    for (let index = 46; index < 61; index++) {
+        maxsG = [...maxsG, index];
+    }
+    let maxsO = [];
+    for (let index = 61; index < 76; index++) {
+        maxsO = [...maxsO, index];
+    }
 
     return (
         <>
@@ -62,6 +92,9 @@ function App() {
             <div className="letras">
                 <NumeroLetras bolas={bolasB} maxs={maxsB} />
                 <NumeroLetras bolas={bolasI} maxs={maxsI} />
+                <NumeroLetras bolas={bolasN} maxs={maxsN} />
+                <NumeroLetras bolas={bolasG} maxs={maxsG} />
+                <NumeroLetras bolas={bolasO} maxs={maxsO} />
             </div>
         </>
     );

@@ -7,47 +7,33 @@ const NumeroLetras = ({ bolas, maxs }) => {
         <div className="letras_b">
             <div className="letras_b_num">
                 <div>
-                    {maxs.map((max) => (
-                        <li key={max}>
-                            {bolas.find((bola) => bola.numero === max) ? (
-                                <>
-                                    <label style={{ display: "block" }}>
-                                        {
-                                            bolas.find(
-                                                (bola) => bola.numero === max
-                                            ).numero
-                                        }
-                                    </label>
-                                    <label style={{ background: "green" }}>
-                                        {
-                                            bolas.find(
-                                                (bola) => bola.numero === max
-                                            ).letra
-                                        }{"-"}
-                                        {max}
-                                    </label>
-                                </>
-                            ) : (
-                                <>
-                                    <label
-                                        style={{
-                                            display: "block",
-                                        }}
-                                    >
-                                        {max}
-                                    </label>
-                                    <label
-                                        style={{
-                                            background: "white",
-                                            color: "black",
-                                        }}
-                                    >
-                                        Vacío
-                                    </label>
-                                </>
-                            )}
-                        </li>
-                    ))}
+                    {maxs.map((max) => {
+                        const bola = bolas.find((bola) => bola.numero === max);
+                        return (
+                            <li key={max}>
+                                {bola ? (
+                                    <>
+                                        <label>{bola.numero}</label>
+                                        <label id={bola.letra === 'B' ? "rosa" : bola.letra === 'I' ? "rojo" : bola.letra === 'N' ? "amarillo" : bola.letra === 'G' ? "azul" : bola.letra === 'O' ? "verde" : "" }>
+                                            {bola.letra}-{max}
+                                        </label>
+                                    </>
+                                ) : (
+                                    <>
+                                        <label>{max}</label>
+                                        <label
+                                            style={{
+                                                background: "white",
+                                                color: "black",
+                                            }}
+                                        >
+                                            N/D
+                                        </label>
+                                    </>
+                                )}
+                            </li>
+                        );
+                    })}
                 </div>
             </div>
         </div>
