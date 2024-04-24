@@ -11,9 +11,8 @@ h2{
 ul{
     margin: 0;
 }
-ul li{
+li{
     list-style: none;
-    width: 0;
 }
 .letras {
     display: flex;
@@ -25,5 +24,10 @@ ul li{
 
 .letras .letras_b .letras_b_num {
     font-size: 2rem;
+}
+
+.letras .letras_b .letras_b_num label:nth-child(2) {
+    border-radius: 51%;
+    padding: 0.5rem;
 }
 

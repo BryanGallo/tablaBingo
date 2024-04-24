@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header.jsx";
 import GenerarBola from "./components/GenerarBola.jsx";
+import NumeroLetras from "./components/NumeroLetras.jsx";
 import bolasLetras from "./data/bolas.js";
 
 import "./App.css";
@@ -15,18 +16,18 @@ function App() {
 
     const agregarBola = (condition) => {
         console.log(condition);
-            if (condition.letra === 'B') {
-                setBolasB([...bolasB,condition])
-            }
-            if (condition.letra === 'I') {
-                setBolasI([...bolasI,condition])
-            }
+        if (condition.letra === "B") {
+            setBolasB([...bolasB, condition]);
+        }
+        if (condition.letra === "I") {
+            setBolasI([...bolasI, condition]);
+        }
     };
 
     const generar = () => {
         if (bolas.length === 0) {
             alert("No hay mas bolas");
-            return
+            return;
         }
         console.log(bolas.length);
         let numeroRamdom = Math.floor(Math.random() * 70) + 1;
@@ -34,8 +35,11 @@ function App() {
         console.log(condition);
         if (!condition) {
             generar();
+            return
         }
-        let nuevoArreglo = bolas.filter((bola) => bola.numero !== condition.numero);
+        let nuevoArreglo = bolas.filter(
+            (bola) => bola.numero !== condition.numero
+        );
         console.log(nuevoArreglo);
         setBolas(nuevoArreglo);
 
@@ -56,84 +60,8 @@ function App() {
             <GenerarBola generar={generar} />
             <Header />
             <div className="letras">
-                <div className="letras_b">
-                    <div className="letras_b_num">
-                        <ul>
-                            {maxsB.map((max) => (
-                                <li key={max}>
-                                    {bolasB.find(
-                                        (bola) => bola.numero === max
-                                    ) ? (
-                                        <>
-                                            <label style={{ display: "block" }}>
-                                                {
-                                                    bolasB.find(
-                                                        (bola) =>
-                                                            bola.numero === max
-                                                    ).numero
-                                                }
-                                            </label>
-                                            <label>
-                                                {
-                                                    bolasB.find(
-                                                        (bola) =>
-                                                            bola.numero === max
-                                                    ).letra
-                                                }
-                                            </label>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <label style={{ display: "block" }}>
-                                                {max}
-                                            </label>
-                                            <label>Vacío</label>
-                                        </>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-                <div className="letras_b">
-                    <div className="letras_b_num">
-                        <ul>
-                            {maxsI.map((max) => (
-                                <li key={max}>
-                                    {bolasI.find(
-                                        (bola) => bola.numero === max
-                                    ) ? (
-                                        <>
-                                            <label style={{ display: "block" }}>
-                                                {
-                                                    bolasI.find(
-                                                        (bola) =>
-                                                            bola.numero === max
-                                                    ).numero
-                                                }
-                                            </label>
-                                            <label>
-                                                {
-                                                    bolasI.find(
-                                                        (bola) =>
-                                                            bola.numero === max
-                                                    ).letra
-                                                }
-                                            </label>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <label style={{ display: "block" }}>
-                                                {max}
-                                            </label>
-                                            <label>Vacío</label>
-                                        </>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+                <NumeroLetras bolas={bolasB} maxs={maxsB} />
+                <NumeroLetras bolas={bolasI} maxs={maxsI} />
             </div>
         </>
     );
