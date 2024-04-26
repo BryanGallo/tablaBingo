@@ -15,7 +15,7 @@ const NumeroLetras = ({ bolas, maxs }) => {
                                     <>
                                         <label>{bola.numero}</label>
                                         <label id={bola.letra === 'B' ? "rosa" : bola.letra === 'I' ? "rojo" : bola.letra === 'N' ? "amarillo" : bola.letra === 'G' ? "azul" : bola.letra === 'O' ? "verde" : "" }>
-                                            {bola.letra}-{max}
+                                            {max}-{bola.letra}
                                         </label>
                                     </>
                                 ) : (

@@ -2,8 +2,9 @@ import { useState } from "react";
 import Header from "./components/Header.jsx";
 import GenerarBola from "./components/GenerarBola.jsx";
 import NumeroLetras from "./components/NumeroLetras.jsx";
+import ResetearJuego from "./components/ResetearJuego.jsx";
 import bolasLetras from "./data/bolas.js";
-
+import Swal from "sweetalert2";
 import "./App.css";
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
 
     const agregarBola = (condition) => {
         console.log(condition);
-        alert(`LA BOLA ES : ${condition.numero}-${condition.letra}`)
+        Swal.fire(`LA BOLA ES : ${condition.numero}-${condition.letra}`);
         if (condition.letra === "B") {
             setBolasB([...bolasB, condition]);
             return true;
@@ -42,7 +43,11 @@ function App() {
 
     const generar = () => {
         if (bolas.length === 0) {
-            alert("No hay mas bolas");
+            Swal.fire({
+                icon: "error",
+                title: "El juego termino",
+                text: "Se terminaron las bolas",
+            });
             return;
         }
 
@@ -85,9 +90,39 @@ function App() {
         maxsO = [...maxsO, index];
     }
 
+    const resetearJuego = () => {
+        Swal.fire({
+            title: "Estas seguro de reiniciar el juego?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, Reiniciar!",
+            cancelButtonText: "No Reiniciar!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Juego Reiniciado",
+                    icon: "success",
+                });
+                setBolas(bolasLetras);
+                setBolasB([]);
+                setBolasI([]);
+                setBolasN([]);
+                setBolasG([]);
+                setBolasO([]);
+            }else{
+                return
+            }
+        });
+    };
+
     return (
         <>
-            <GenerarBola generar={generar} />
+            <div className="container">
+                <GenerarBola generar={generar} />
+                <ResetearJuego resetearJuego={resetearJuego} />
+            </div>
             <Header />
             <div className="letras">
                 <NumeroLetras bolas={bolasB} maxs={maxsB} />

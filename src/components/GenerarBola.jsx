@@ -1,10 +1,17 @@
 import React from "react";
 
-const GenerarBola = ({generar}) => {
-    
+const GenerarBola = ({ generar }) => {
     return (
         <>
-            <button onClick={generar}>GenerarBola</button>
+            <div class="wrapper">
+                <button onClick={generar}>
+                GenerarBola
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </>
     );
 };
