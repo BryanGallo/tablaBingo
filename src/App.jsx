@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header.jsx";
 import GenerarBola from "./components/GenerarBola.jsx";
 import NumeroLetras from "./components/NumeroLetras.jsx";
@@ -9,13 +9,17 @@ import Swal from "sweetalert2";
 import "./App.css";
 
 function App() {
-    const [bolas, setBolas] = useState(bolasLetras);
+    const [bolas, setBolas] = useState([]);
     const [bolasB, setBolasB] = useState([]);
     const [bolasI, setBolasI] = useState([]);
     const [bolasN, setBolasN] = useState([]);
     const [bolasG, setBolasG] = useState([]);
     const [bolasO, setBolasO] = useState([]);
     const [resumen, setResumen] = useState([]);
+
+    useEffect(() => {
+        setBolas(bolasLetras);
+    }, []);
 
     const MAX = 5;
     const agregarBola = (condition) => {
@@ -26,11 +30,11 @@ function App() {
             if (resumen.length === MAX) {
                 const nuevoResumen = resumen.slice(1);
                 setResumen([...nuevoResumen, valor]);
-            }else{
-                setResumen([...resumen,valor])
+            } else {
+                setResumen([...resumen, valor]);
             }
         };
-        agregarResumen(condition)
+        agregarResumen(condition);
 
         const colores = {
             B: "rosa",
@@ -138,7 +142,7 @@ function App() {
                 setBolasN([]);
                 setBolasG([]);
                 setBolasO([]);
-                setResumen([])
+                setResumen([]);
             } else {
                 return;
             }
@@ -151,7 +155,7 @@ function App() {
                 <GenerarBola generar={generar} />
                 <ResetearJuego resetearJuego={resetearJuego} />
             </div>
-            <h2 style={{marginTop:"1rem"}}>
+            <h2 style={{ marginTop: "1rem" }}>
                 <strong>Ultimas 5 bolas que salieron</strong>
             </h2>
             <Resumen resumen={resumen} />
