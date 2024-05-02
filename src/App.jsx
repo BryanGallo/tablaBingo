@@ -17,7 +17,19 @@ function App() {
 
     const agregarBola = (condition) => {
         console.log(condition);
-        Swal.fire(`LA BOLA ES : ${condition.numero}-${condition.letra}`);
+        const colores ={
+            B:"rosa",
+            I:"rojo",
+            N:"amarillo",
+            G:"azul",
+            O:"verde"
+        }
+        let color = colores[condition.letra]
+
+        Swal.fire({
+            title: "LA BOLA ES :",
+            html: `<p id=${color}>${condition.letra}-${condition.numero}</p>`,
+        });
         if (condition.letra === "B") {
             setBolasB([...bolasB, condition]);
             return true;
@@ -111,8 +123,8 @@ function App() {
                 setBolasN([]);
                 setBolasG([]);
                 setBolasO([]);
-            }else{
-                return
+            } else {
+                return;
             }
         });
     };
@@ -124,6 +136,9 @@ function App() {
                 <ResetearJuego resetearJuego={resetearJuego} />
             </div>
             <Header />
+            <h2>
+                Quedan: <strong>{bolas.length}</strong>
+            </h2>
             <div className="letras">
                 <NumeroLetras bolas={bolasB} maxs={maxsB} />
                 <NumeroLetras bolas={bolasI} maxs={maxsI} />
