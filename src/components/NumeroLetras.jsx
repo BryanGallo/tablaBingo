@@ -41,7 +41,7 @@ const NumeroLetras = ({ bolas, maxs }) => {
                                                 color: "black",
                                             }}
                                         >
-                                            N/D
+                                            *
                                         </label>
                                     </>
                                 )}

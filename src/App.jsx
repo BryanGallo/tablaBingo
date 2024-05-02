@@ -3,6 +3,7 @@ import Header from "./components/Header.jsx";
 import GenerarBola from "./components/GenerarBola.jsx";
 import NumeroLetras from "./components/NumeroLetras.jsx";
 import ResetearJuego from "./components/ResetearJuego.jsx";
+import Resumen from "./components/Resumen.jsx";
 import bolasLetras from "./data/bolas.js";
 import Swal from "sweetalert2";
 import "./App.css";
@@ -14,17 +15,31 @@ function App() {
     const [bolasN, setBolasN] = useState([]);
     const [bolasG, setBolasG] = useState([]);
     const [bolasO, setBolasO] = useState([]);
+    const [resumen, setResumen] = useState([]);
 
+    const MAX = 5;
     const agregarBola = (condition) => {
         console.log(condition);
-        const colores ={
-            B:"rosa",
-            I:"rojo",
-            N:"amarillo",
-            G:"azul",
-            O:"verde"
-        }
-        let color = colores[condition.letra]
+
+        const agregarResumen = (valor) => {
+            console.log(valor);
+            if (resumen.length === MAX) {
+                const nuevoResumen = resumen.slice(1);
+                setResumen([...nuevoResumen, valor]);
+            }else{
+                setResumen([...resumen,valor])
+            }
+        };
+        agregarResumen(condition)
+
+        const colores = {
+            B: "rosa",
+            I: "rojo",
+            N: "amarillo",
+            G: "azul",
+            O: "verde",
+        };
+        let color = colores[condition.letra];
 
         Swal.fire({
             title: "LA BOLA ES :",
@@ -123,6 +138,7 @@ function App() {
                 setBolasN([]);
                 setBolasG([]);
                 setBolasO([]);
+                setResumen([])
             } else {
                 return;
             }
@@ -135,10 +151,14 @@ function App() {
                 <GenerarBola generar={generar} />
                 <ResetearJuego resetearJuego={resetearJuego} />
             </div>
-            <Header />
+            <h2 style={{marginTop:"1rem"}}>
+                <strong>Ultimas 5 bolas que salieron</strong>
+            </h2>
+            <Resumen resumen={resumen} />
             <h2>
                 Quedan: <strong>{bolas.length}</strong>
             </h2>
+            <Header />
             <div className="letras">
                 <NumeroLetras bolas={bolasB} maxs={maxsB} />
                 <NumeroLetras bolas={bolasI} maxs={maxsI} />
